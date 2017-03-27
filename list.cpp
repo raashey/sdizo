@@ -8,24 +8,35 @@ int List::sizeOfList(){
 	
 }
 
-List::doubleList * List::loadFromFileL(char* fileName){
+void List::loadFromFileL(){
 	
-	doubleList* e;
+	head=tail=NULL;
+	doubleList* pom=new doubleList;
+	doubleList* tmp=new doubleList;
 	fstream plik;
-	plik.open(fileName,ios::in);
+	plik.open("liczby.txt");
 	if(plik.good()==false)
 		cout<<"Plik zostal zle wczytany";
 	plik>>amount;
 	for(int i=0; i<amount; i++){
-	 
-		plik>>e->data; 
-	  	if(tail) tail->next = e;
-      	e->next = NULL; 
-		e->prev = tail;
-      	tail = e;
-     	if(!head) head = tail;
-     	counter++;	
+	 	
+	 	tmp=new doubleList;
+	 	plik>>tmp->data;
+		tmp->prev=NULL;
+		tmp->next=NULL;
+		if (head == NULL)
+			head = tmp;
+		else
+		{
+			pom = head;
+			while (pom->next != NULL)
+				pom = pom->next;
+			tmp->prev = pom;
+			pom->next = tmp;
+		}
+		counter++;
 	}
+	tail=tmp;
 }
 
 bool List::isValueInList(int val){
