@@ -1,18 +1,19 @@
 #include "List.h"
 
-int sizeOfList(){
+int List::sizeOfList(){
 	
 	return counter;
 	
 }
 
-doubleList * loadFromFileL(char* fileName){
+List::doubleList * List::loadFromFileL(char* fileName){
 	
 	doubleList* e;
 	fstream plik;
 	plik.open(fileName,ios::in);
 	if(plik.good()==false)
 		cout<<"Plik zostal zle wczytany";
+	plik>>amount;
 	for(int i=0; i<amount; i++){
 	 
 		plik>>e->data; 
@@ -25,11 +26,11 @@ doubleList * loadFromFileL(char* fileName){
 	}
 }
 
-bool isValueInList(int val, doubleList*& head){
+bool List::isValueInList(int val){
 	
 	doubleList* e;
 	e=head;
-	while(p){
+	while(e){
 		if(e->data=val)
 			return true;
 		e=e->next;	
@@ -37,7 +38,7 @@ bool isValueInList(int val, doubleList*& head){
 	return false;	
 }
 
-void * addValue(int value, doubleList*& head, doubleList*& tail){
+void List::addValue(int value){
 	
 	doubleList* e;
 	e->data=value;
@@ -51,15 +52,17 @@ void * addValue(int value, doubleList*& head, doubleList*& tail){
     counter++;
 }
 
-void * deleteFromList(int index,int amount,doubleList*& head, doubleList*& tail){
+void List::deleteFromList(int index){
 	
-	doubleList* e,p,n;
+	doubleList* e= new doubleList;
+	doubleList* p= new doubleList;
+	doubleList* n= new doubleList;
 	if(head){
 		e=head;
 		if(index<amount){
 			for(int i=0; i<index+1; i++)
 				e=e->next;
-			if(p==NULL){
+			if(e==NULL){
 				e=tail;
 				tail=tail->prev;
 				e=NULL;
@@ -80,13 +83,14 @@ void * deleteFromList(int index,int amount,doubleList*& head, doubleList*& tail)
 		cout<<"Brak listy";
 }
 
-void display(doubleList*& head){
+void List::display(){
 	
+	int i=0;
 	doubleList* e;
 	e=head;
 	while(e){
 		cout<<i<<". "<<e->data;
 		e=e->next;
+		i++;
 	}
 }
-	
