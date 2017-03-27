@@ -1,7 +1,8 @@
 #include "List.h"
-#include <iostream>
 #include <fstream>
+#include <iostream>
 
+using namespace std;
 int List::sizeOfList(){
 	
 	return counter;
@@ -44,7 +45,7 @@ bool List::isValueInList(int val){
 	doubleList* e;
 	e=head;
 	while(e){
-		if(e->data=val)
+		if(e->data==val)
 			return true;
 		e=e->next;	
 	}
@@ -53,7 +54,7 @@ bool List::isValueInList(int val){
 
 void List::addValue(int value){
 	
-	doubleList* e;
+	doubleList* e= new doubleList;
 	e->data=value;
 	if(tail) 
 		tail->next = e;
@@ -73,7 +74,7 @@ void List::deleteFromList(int index){
 	if(head){
 		e=head;
 		if(index<amount){
-			for(int i=0; i<index+1; i++)
+			for(int i=0; i<index-1; i++)
 				e=e->next;
 			if(e==NULL){
 				e=tail;
@@ -98,12 +99,13 @@ void List::deleteFromList(int index){
 
 void List::display(){
 	
-	int i=0;
+	int i=1;
 	doubleList* e;
 	e=head;
 	while(e){
-		cout<<i<<". "<<e->data;
+		cout<<i<<". "<<e->data<<endl;
 		e=e->next;
 		i++;
 	}
 }
+	
