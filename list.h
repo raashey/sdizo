@@ -21,7 +21,7 @@ class List
 
 	int sizeOfList();
 	
-	doubleList * loadFromFileL(char* fileName);
+	void loadFromFileL();
 	
 	bool isValueInList(int val);
 	
