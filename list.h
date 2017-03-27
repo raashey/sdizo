@@ -4,6 +4,8 @@
 class List
 {
 	public:
+		
+		int amount;
 	
 	struct doubleList{
 		
@@ -21,13 +23,13 @@ class List
 	
 	doubleList * loadFromFileL(char* fileName);
 	
-	bool isValueInList(int val, doubleList*& head);
+	bool isValueInList(int val);
 	
-	void * addValue(int index, doubleList*& head, doubleList*& tail);
+	void addValue(int index);
 
-	void * deleteFromList(int index, doubleList*& head, doubleList*& tail);
+	void deleteFromList(int index);
 
-	void display(doubleList*& head);
+	void display();
 };
 
 #endif
