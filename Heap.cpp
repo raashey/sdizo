@@ -42,7 +42,7 @@ void Heap::addValueToHeap(int value){
 	size++;
 	delete[] tab;
 	tab=aux;
-	j = size;
+	j = size-1;
 	k = (j-1)/2;
 	while(j>0 && tab[k]<value){
 		tab[j]=tab[k];
